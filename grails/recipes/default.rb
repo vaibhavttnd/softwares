@@ -36,8 +36,8 @@ end
 
 cookbook_file '/home/ubuntu/path.sh' do
   source 'path.sh'
-  owner 'ubuntu'
-  group 'ubuntu'
+  owner 'root'
+  group 'root'
   mode '0777'
   action :create
   notifies :run, 'execute[path.sh]', :immediately
