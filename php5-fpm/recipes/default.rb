@@ -13,4 +13,4 @@
 #  |_( )__||_( )__||_( )__||_( )__||_( )__||_( )__||_( )__|
 
 
-include_recipe 'install'
+include_recipe 'php5-fpm::install'
