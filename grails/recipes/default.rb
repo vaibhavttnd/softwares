@@ -23,12 +23,12 @@ end
 
 bash 'java and grails home' do
   code <<-EOH
-sudo   export GRAILS_HOME=/usr/local/grails-2.5.1
-sudo export JAVA_HOME=/usr/lib/jvm/java-8-oracle-amd64
+export GRAILS_HOME=/usr/local/grails-2.5.1
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle-amd64
 PATH=$PATH:$GRAILS_HOME/bin:$JAVA_HOME/bin
-sudo export GRAILS_HOME
-sudo export JAVA_HOME
-sudo export PATH   
+export GRAILS_HOME
+export JAVA_HOME
+export PATH   
 
     EOH
 end
