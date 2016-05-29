@@ -34,14 +34,14 @@ end
 #end
 
 
-cookbook_file '/home/ubuntu/path.sh' do
-  source 'path.sh'
-  owner 'root'
-  group 'root'
-  mode '0777'
-  action :create
-  notifies :run, 'bash[source]', :immediately
-end
+#cookbook_file '/home/ubuntu/path.sh' do
+#  source 'path.sh'
+#  owner 'root'
+#  group 'root'
+#  mode '0777'
+#  action :create
+#  notifies :run, 'bash[source]', :immediately
+#end
 
 
 #execute 'path.sh' do
@@ -49,10 +49,24 @@ end
 # action :nothing
 #end
 
+#bash 'source' do
+#  user 'root'
+#  cwd '/home/ubuntu'
+#  code <<-EOH
+#  source /home/ubuntu/path.sh
+#  EOH
+#end
+
+
 bash 'source' do
-  user 'root'
   cwd '/home/ubuntu'
   code <<-EOH
-  source /home/ubuntu/path.sh
+  echo "export GRAILS_HOME=/usr/local/grails-2.5.1" >> /home/ubuntu/.bashrc
+  echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle-amd64" >> /home/ubuntu/.bashrc
+  echo "PATH=$PATH:$GRAILS_HOME/bin:$JAVA_HOME/bin" >> /home/ubuntu/.bashrc
+  echo "export GRAILS_HOME" >> /home/ubuntu/.bashrc
+  echo "export JAVA_HOME" >> /home/ubuntu/.bashrc
+  echo "export PATH"  >>  /home/ubuntu/.bashrc
+  source /home/ubuntu/.bashrc
   EOH
 end
