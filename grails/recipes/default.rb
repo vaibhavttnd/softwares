@@ -44,5 +44,5 @@ end
 
 
 execute 'path.sh' do
- command 'bash /home/ubuntu/path.sh'
+ command '. /home/ubuntu/path.sh'
 end
