@@ -37,7 +37,7 @@ ruby_block 'set-env-java-grails-home-path' do
   block do
     ENV['JAVA_HOME'] = '/usr/lib/jvm/java-8-oracle-amd64'
     ENV['GRAILS_HOME'] = '/usr/local/grails-2.5.1'
-    ENV['PATH']="#{ENV['PATH']}:#{ENV['GRAILS_HOME']}/bin:#{ENV['JAVA_HOME']}/bin"
+#    ENV['PATH']="#{ENV['PATH']}:#{ENV['GRAILS_HOME']}/bin:#{ENV['JAVA_HOME']}/bin"
     action :create
   end
 end
@@ -45,14 +45,10 @@ end
 
 
 
-#bash 'path' do
-#  code <<-EOH
-#PATH=$PATH:$GRAILS_HOME/bin:$JAVA_HOME/bin
-#export GRAILS_HOME
-#export JAVA_HOME
-#export PATH   
+bash 'path' do
+  code <<-EOH
+PATH=$PATH:$GRAILS_HOME/bin:$JAVA_HOME/bin
+export PATH   
 
-#    EOH
-#end
-
-
+    EOH
+end
