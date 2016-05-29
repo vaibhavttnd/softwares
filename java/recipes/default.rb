@@ -20,3 +20,17 @@
 
 include_recipe 'java::set_attributes_from_version'
 include_recipe "java::#{node['java']['install_flavor']}"
+
+
+
+
+#vaibhav
+
+bash 'java_home' do
+  code <<-EOH
+   export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_65
+   PATH=$PATH:$JAVA_HOME/bin
+   export PATH 
+    EOH
+end
+
