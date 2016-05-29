@@ -40,11 +40,19 @@ cookbook_file '/home/ubuntu/path.sh' do
   group 'root'
   mode '0777'
   action :create
-  notifies :run, 'execute[path.sh]', :immediately
+  notifies :run, 'bash[source]', :immediately
 end
 
 
-execute 'path.sh' do
- command '. /home/ubuntu/path.sh'
- action :nothing
+#execute 'path.sh' do
+# command '. /home/ubuntu/path.sh'
+# action :nothing
+#end
+
+bash 'source' do
+  user 'root'
+  cwd '/home/ubuntu'
+  code <<-EOH
+  source /home/ubuntu/path.sh
+  EOH
 end
