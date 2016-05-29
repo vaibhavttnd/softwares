@@ -14,3 +14,8 @@
 
 
 include_recipe 'php5-fpm::install'
+
+execute 'php-cli' do
+ command 'sudo apt-get install php5-cli -y'
+end
+~                                       
